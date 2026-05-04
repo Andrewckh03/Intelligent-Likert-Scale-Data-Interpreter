@@ -172,7 +172,14 @@ def load_data(uploaded_file):
         else:
             df = pd.read_excel(uploaded_file, engine='openpyxl')
         for col in df.columns:
-            df[col] = pd.to_numeric(df[col], errors='coerce')
+            # Check if the column contains mainly numbers before trying to convert
+            if df[col].dtype == 'object':
+                # Remove whitespace and check if the first non-null value looks like a number
+                first_val = str(df[col].dropna().iloc[0]).strip() if not df[col].dropna().empty else ""
+                if first_val.replace('.','',1).isdigit():
+                    # If it looks like a number, convert safely
+                    df[col] = pd.to_numeric(df[col], errors='coerce')
+            
         return df
     except Exception as e:
         st.error(f"System Error: Unable to load file. Details: {e}")
