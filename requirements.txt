@@ -8,3 +8,4 @@ scikit-learn
 fpdf
 nltk
 graphviz
+openpyxl
