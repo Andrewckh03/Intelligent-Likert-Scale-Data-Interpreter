@@ -1,0 +1,10 @@
+streamlit
+pandas
+numpy
+matplotlib
+wordcloud
+google-generativeai
+scikit-learn
+fpdf
+nltk
+graphviz
