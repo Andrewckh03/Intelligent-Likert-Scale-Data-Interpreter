@@ -172,7 +172,7 @@ def load_data(uploaded_file):
         else:
             df = pd.read_excel(uploaded_file, engine='openpyxl')
         for col in df.columns:
-            df[col] = pd.to_numeric(df[col], errors='ignore')
+            df[col] = pd.to_numeric(df[col], errors='coerce')
         return df
     except Exception as e:
         st.error(f"System Error: Unable to load file. Details: {e}")
