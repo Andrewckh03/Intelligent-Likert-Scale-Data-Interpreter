@@ -437,7 +437,7 @@ with tab3:
     else:
         with st.container():
             st.subheader("Step 1: Clean Your Data")
-            st.write("The system has identified potential administrative columns (e.g., Names, Timestamps). Removing these ensures the model focuses only on meaningful survey answers.")
+            st.write("The system has identified potential administrative columns (e.g., Names, Timestamps). You may remove any columns you feel that are not needed for the analysis.")
             if st.session_state.df_clean is None: st.session_state.df_clean = st.session_state.df_raw.copy()
             suggested = detect_identifier_columns(st.session_state.df_raw)
             to_drop = st.multiselect("Review columns to remove:", st.session_state.df_raw.columns, default=suggested)
